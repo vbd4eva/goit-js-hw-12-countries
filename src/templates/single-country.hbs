@@ -1,0 +1,34 @@
+<div class="single-country">
+
+    <div class="single-country__header">
+        <h2 class="single-country__name">{{name}}</h2>
+        <b class="single-country__native-name">({{nativeName}})</b>
+    </div>
+
+    <div class="single-country__flex-block">
+        <ul class="single-country__brief">
+            <li class="single-country__item">
+                <span class="single-country__brief-key">Capital</span>
+                :
+                <span class="single-country__brief-value">{{capital}}</span>
+            </li>
+            <li class="single-country__item">
+                <span class="single-country__brief-key">Population</span>
+                :
+                <span class="single-country__brief-value">{{population}}</span>
+            </li>
+            <li class="single-country__item">
+                <span class="single-country__brief-key">Languages</span>
+                :
+                <ul class="single-country__brief-sublist">
+                    {{#each languages}}
+                    <li class="single-country__brief-value">{{this.name}} <sub>{{this.nativeName}}</sub></li>
+                    {{/each}}
+                </ul>
+            </li>
+        </ul>
+
+        <img class="single-country__flag" src="{{flag}}" alt="{{name}}  flag" class="class">
+
+    </div>
+</div>

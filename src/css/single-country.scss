@@ -1,0 +1,29 @@
+.single-country {
+  background-color: #c6a973c2;
+
+  &__header {
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+  }
+
+  &__flex-block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__brief {
+    padding: 0 0 0 24px;
+    margin: 0;
+  }
+
+  &__native-name {
+    font-weight: 300;
+    padding-left: 10px;
+  }
+
+  &__flag {
+    max-width: 40%;
+  }
+}
