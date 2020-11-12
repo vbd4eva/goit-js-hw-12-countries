@@ -21,13 +21,13 @@ import { Stack } from '@pnotify/core';
 // document.body.append(stackContext);
 
 const myStack = new Stack({
-  dir1: 'top',
+  dir1: 'down',
   // dir2: 'left',
   firstpos1: 125,
   firstpos2: 25,
   spacing1: 36,
   spacing2: 36,
-  push: 'left',
+  // push: 'left',
     context: document.querySelector('.find-country__alert')
 });
 
@@ -40,11 +40,6 @@ const options = {
         stack: myStack
 
     }
-
-function pnotifyOptions(options = {}) { 
- 
-}
-
 
 
 export { options, alert };
