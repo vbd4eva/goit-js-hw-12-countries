@@ -1,4 +1,6 @@
 
+import "@pnotify/core/dist/PNotify.css";
+import '@pnotify/core/dist/BrightTheme.css';
 //   import { alert, notice, info, success, error } from '@pnotify/core';
 import { alert, defaultModules } from '@pnotify/core/';
 
@@ -21,12 +23,12 @@ import { Stack } from '@pnotify/core';
 const myStack = new Stack({
   dir1: 'down',
   // dir2: 'left',
-  firstpos1: 25,
+  firstpos1: 125,
   firstpos2: 25,
   spacing1: 36,
   spacing2: 36,
   push: 'left',
-    context: document.querySelector('.find-country__result')
+    context: document.querySelector('.find-country__alert')
 });
 
 const options = {
@@ -43,7 +45,6 @@ function pnotifyOptions(options = {}) {
  
 }
 
-import '@pnotify/core/dist/BrightTheme.css';
 
 
 export { options, alert };

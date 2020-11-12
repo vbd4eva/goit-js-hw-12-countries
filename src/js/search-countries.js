@@ -16,6 +16,7 @@ import singleCountryTpl from '../templates/single-country.hbs';
 const refs = {
     search: document.querySelector('.find-country__search'),
     result: document.querySelector('.find-country__result'),    
+    alert: document.querySelector('.find-country__alert')
 }
 
 
@@ -34,12 +35,14 @@ function onSearch(searchQuery) {
     fetchCountries(searchQuery)
         .then(responseHeandler)
         .catch(error => {
+            refs.result.innerHTML = "";
+            refs.alert.innerHTML = "";
             const alertTitle = `Country: "${refs.search.value}", - is not founded`;
             alert({...options,  title: alertTitle });
             console.log('CATH - Ошибка выполнения запроса' + error);
         });
     
-    localStorageAPI.save('searchQuery', searchQuery);
+        localStorageAPI.save('searchQuery', searchQuery);
 }
 
 function responseHeandler(response, overSize = 10) {
@@ -47,14 +50,18 @@ function responseHeandler(response, overSize = 10) {
     // console.dir(response);
     if (!response.length) { 
         refs.result.innerHTML = "";
+        refs.alert.innerHTML = "";
         const alertTitle = `Country: "${refs.search.value}", - is not founded`;
         alert({...options,  title: alertTitle });
         console.log('Страна не найдена!');
         return;
     }
+     
+
 
     //Если бекенд вернул массив с одной страной, в интерфейсе рендерится разметка с данными о стране: название, столица, население, языки и флаг.
     if (1 === response.length) {
+        refs.alert.innerHTML = "";
         renderSingle(response);
         return;
     }
@@ -62,12 +69,14 @@ function responseHeandler(response, overSize = 10) {
     //'больше 10ти = Если бекенд вернул больше чем 10 стран подошедших под критерий введенный пользователем, в интерфейсе отображается нотификация о том, что необходимо сделать запрос более специфичным. Для оповещений используй плагин pnotify(https://github.com/sciactive/pnotify).'
     if (overSize < response.length) {
         // console.log('больше 10ти = Если бекенд вернул больше чем 10 стран подошедших под критерий введенный пользователем, в интерфейсе отображается нотификация о том, что необходимо сделать запрос более специфичным. Для оповещений используй плагин pnotify(https://github.com/sciactive/pnotify).');
+       refs.result.innerHTML = "";
         renderAlert(response);
         return;
     }
 
 
-    //Если бекенд вернул от 2-х до 10-х стран, под инпутом отображается список имен найденных стран.   
+    //Если бекенд вернул от 2-х до 10-х стран, под инпутом отображается список имен найденных стран. 
+    refs.alert.innerHTML = "";
     renderList(response);
 
 }
