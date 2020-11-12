@@ -21,7 +21,7 @@ import { Stack } from '@pnotify/core';
 // document.body.append(stackContext);
 
 const myStack = new Stack({
-  dir1: 'down',
+  dir1: 'top',
   // dir2: 'left',
   firstpos1: 125,
   firstpos2: 25,
