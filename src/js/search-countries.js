@@ -20,7 +20,7 @@ const refs = {
 }
 
 
-refs.search.value = localStorageAPI.load('searchQuery');
+refs.search.value = localStorageAPI.load('searchQuery') || '';
 
 refs.search.addEventListener('input', debounce((e) => { onSearch(refs.search.value) }, 500));
 refs.search.closest('form').addEventListener('submit', (e) => {
@@ -119,18 +119,3 @@ function renderAlert(response) {
     console.log('больше 10ти = Если бекенд вернул больше чем 10 стран подошедших под критерий введенный пользователем, в интерфейсе отображается нотификация о том, что необходимо сделать запрос более специфичным. Для оповещений используй плагин pnotify(https://github.com/sciactive/pnotify).');
 
 }
-
-
-
-
-
-
-// class RenderHtmml(){ 
-//     constructor({ alert, list, single }){
-//         this.refs.alert = alert;
-//         this.refs.list = list;
-//         this.refs.single = single;
-//      }
-// }
-
-// const renderHtml = new RenderHtmml();
